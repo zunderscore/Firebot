@@ -17,28 +17,85 @@ import {
     XIcon,
 } from "@heroicons/react/outline";
 import { ChevronLeftIcon } from "@heroicons/react/solid";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const subNavigation = [
     {
         name: "General",
-        description: "General settings for Firebot",
+        description: "Manage general settings for Firebot",
         href: "#",
-        icon: CogIcon,
+        icon: <FontAwesomeIcon icon={["fas", "cog"]} />,
         current: false,
     },
     {
         name: "Appearance",
         description: "Tweak the look and feel of Firebot",
         href: "#",
-        icon: PhotographIcon,
+        icon: <FontAwesomeIcon icon={["fas", "image"]} />,
+        current: false,
+    },
+    {
+        name: "Setups",
+        description: "Install, remove, or create prepackaged Firebot functionality",
+        href: "#",
+        icon: <FontAwesomeIcon icon={["fas", "box-open"]} />,
+        current: false,
+    },
+    {
+        name: "Triggers",
+        description: "Tweak behaviors of various triggers (commands, events, etc.)",
+        href: "#",
+        icon: <FontAwesomeIcon icon={["fas", "bolt"]} />,
+        current: false,
+    },
+    {
+        name: "Database",
+        description: "Edit viewer database options",
+        href: "#",
+        icon: <FontAwesomeIcon icon={["fas", "database"]} />,
+        current: false,
+    },
+    {
+        name: "Overlays",
+        description: "Manage overlays, custom fonts, and more",
+        href: "#",
+        icon: <FontAwesomeIcon icon={["fas", "tv"]} />,
         current: false,
     },
     {
         name: "Integrations",
-        description: "Link Streaming Providers and other tools",
+        description: "Link streaming providers and other third-party services",
         href: "#",
-        icon: ViewGridAddIcon,
+        icon: <FontAwesomeIcon icon={["fas", "plug"]} />,
         current: true,
+    },
+    {
+        name: "TTS",
+        description: "Manage text-to-speech audio settings",
+        href: "#",
+        icon: <FontAwesomeIcon icon={["fas", "volume-up"]} />,
+        current: false,
+    },
+    {
+        name: "Backups",
+        description: "Manage backups and backup settings",
+        href: "#",
+        icon: <FontAwesomeIcon icon={["fas", "file-archive"]} />,
+        current: false,
+    },
+    {
+        name: "Scripts",
+        description: "Configure script settings",
+        href: "#",
+        icon: <FontAwesomeIcon icon={["fas", "code"]} />,
+        current: false,
+    },
+    {
+        name: "Advanced",
+        description: "Change advanced Firebot settings",
+        href: "#",
+        icon: <FontAwesomeIcon icon={["fas", "tools"]} />,
+        current: false,
     },
 ];
 
@@ -96,11 +153,10 @@ export function Settings() {
                                             item.current ? "page" : undefined
                                         }
                                     >
-                                        <item.icon
-                                            className="flex-shrink-0 -mt-0.5 h-6 w-6 text-blue-gray-300"
-                                            aria-hidden="true"
-                                        />
-                                        <div className="ml-3 text-sm">
+                                        <div className="w-8 flex justify-center items-center">
+                                            {item.icon}
+                                        </div>
+                                        <div className="ml-3 w-full text-sm">
                                             <p className="font-medium text-blue-gray-50">
                                                 {item.name}
                                             </p>

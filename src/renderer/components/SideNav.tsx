@@ -41,13 +41,97 @@ const menu: Record<string, MenuItem[]> = {
             title: "Chat Feed",
             to: "CHAT_FEED",
         },
+        {
+            icon: <FontAwesomeIcon icon={["fas", "list"]} />,
+            iconClassName: "",
+            title: "Events",
+            to: "EVENTS",
+        },
+        {
+            icon: <FontAwesomeIcon icon={["fas", "stopwatch"]} />,
+            iconClassName: "",
+            title: "Timers",
+            to: "TIMERS",
+        },
+        {
+            icon: <FontAwesomeIcon icon={["fas", "gifts"]} />,
+            iconClassName: "",
+            title: "Channel Rewards",
+            to: "CHANNEL_REWARDS",
+        },
+        {
+            icon: <FontAwesomeIcon icon={["fas", "magic"]} />,
+            iconClassName: "",
+            title: "Preset Effect Lists",
+            to: "PRESET_EFFECT_LISTS",
+        },
+        {
+            icon: <FontAwesomeIcon icon={["fas", "keyboard"]} />,
+            iconClassName: "",
+            title: "Hotkeys",
+            to: "HOTKEYS",
+        },
+        {
+            icon: <FontAwesomeIcon icon={["far", "tally"]} />,
+            iconClassName: "",
+            title: "Counters",
+            to: "COUNTERS",
+        },
     ],
     Management: [
+        {
+            icon: <FontAwesomeIcon icon={["fas", "stream"]} />,
+            iconClassName: "",
+            title: "Effect Queues",
+            to: "EFFECT_QUEUES",
+        },
+        {
+            icon: <FontAwesomeIcon icon={["fas", "dice"]} />,
+            iconClassName: "",
+            title: "Games",
+            to: "GAMES",
+        },
+        {
+            icon: <FontAwesomeIcon icon={["fas", "gavel"]} />,
+            iconClassName: "",
+            title: "Moderation",
+            to: "MODERATION",
+        },
+        {
+            icon: <FontAwesomeIcon icon={["far", "money-bill-alt"]} />,
+            iconClassName: "",
+            title: "Currency",
+            to: "CURRENCY",
+        },
+        {
+            icon: <FontAwesomeIcon icon={["fas", "quote-right"]} />,
+            iconClassName: "",
+            title: "Quotes",
+            to: "QUOTES",
+        },
+        {
+            icon: <FontAwesomeIcon icon={["fas", "users"]} />,
+            iconClassName: "",
+            title: "Viewers",
+            to: "VIEWERS",
+        },
+        {
+            icon: <FontAwesomeIcon icon={["fas", "user-tag"]} />,
+            iconClassName: "",
+            title: "Viewer Roles",
+            to: "VIEWER_ROLES",
+        },
         {
             icon: <FontAwesomeIcon icon={["fas", "cog"]} />,
             iconClassName: "",
             title: "Settings",
             to: "SETTINGS",
+        },
+        {
+            icon: <FontAwesomeIcon icon={["fas", "download"]} />,
+            iconClassName: "",
+            title: "Updates",
+            to: "UPDATES",
         },
     ],
 };
@@ -194,6 +278,25 @@ const SidebarHeader = (isOpen: boolean) => (
     </div>
 );
 
+const SidebarFooter = (isOpen: boolean) => (
+    <div
+        className={clsx(
+            "flex items-center h-16 relative border-b border-gray-700 mb-3"
+        )}
+    >
+        <div className="w-24 flex justify-center items-center">
+            {<img src={logo} className="w-8" />}
+        </div>
+        <motion.div
+            variants={headerVariants}
+            animate={isOpen ? variantType.visible : variantType.hidden}
+            className={clsx("absolute bottom-0 inset-0 ml-20 w-64 flex items-center")}
+        >
+            <span className="text-yellow-400 text-2xl font-thin">Firebot</span>
+        </motion.div>
+    </div>
+);
+
 export const SideNav = () => {
     const [isOpen, toggleIsOpen] = useState(false);
 
@@ -206,14 +309,14 @@ export const SideNav = () => {
                 animate={isOpen ? variantType.visible : variantType.hidden}
             />
             <motion.aside
-                className="fixed h-full z-30 bg-gray-800 overflow-hidden"
+                className="fixed h-full z-30 bg-gray-800"
                 style={{ width: "65px" }}
                 whileHover={{ width: 250 }}
                 onHoverStart={thunk(toggleIsOpen, [true])}
                 onHoverEnd={thunk(toggleIsOpen, [false])}
             >
                 {SidebarHeader(isOpen)}
-                <ul className="h-full">
+                <ul className="h-full overflow-hidden overflow-y-auto">
                     {Object.keys(menu).map((category) => (
                         <>
                             {/* {CategoryHeader(category, isOpen)} */}
@@ -221,6 +324,7 @@ export const SideNav = () => {
                         </>
                     ))}
                 </ul>
+                {SidebarFooter(isOpen)}
             </motion.aside>
         </>
     );
