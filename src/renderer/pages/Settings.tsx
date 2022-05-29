@@ -1,21 +1,5 @@
 import React from "react";
 import { useObserver } from "mobx-react-lite";
-import {
-    BellIcon,
-    BookmarkAltIcon,
-    CashIcon,
-    CogIcon,
-    FireIcon,
-    HomeIcon,
-    InboxIcon,
-    KeyIcon,
-    MenuIcon,
-    PhotographIcon,
-    SearchCircleIcon,
-    UserIcon,
-    ViewGridAddIcon,
-    XIcon,
-} from "@heroicons/react/outline";
 import { ChevronLeftIcon } from "@heroicons/react/solid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
